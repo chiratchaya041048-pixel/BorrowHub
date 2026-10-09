@@ -1,0 +1,371 @@
+import { Equipment, BorrowRequest, CategoryInfo, UserProfile } from '../types';
+
+export const INITIAL_ADMIN_EMAILS = [
+  'chiratchaya041048@gmail.com'
+];
+
+export const CATEGORIES: CategoryInfo[] = [
+  {
+    key: 'camera',
+    label: 'กล้องและเลนส์',
+    iconName: 'Camera',
+    description: 'กล้อง Cinema, Mirrorless, Action Cam, และเลนส์คุณภาพสูง'
+  },
+  {
+    key: 'audio',
+    label: 'ไมโครโฟนและเสียง',
+    iconName: 'Mic',
+    description: 'ไมค์ไร้สาย, ไมค์ Shotgun, เครื่องบันทึกเสียงดิจิทัล'
+  },
+  {
+    key: 'lighting',
+    label: 'ไฟสตูดิโอและจัดแสง',
+    iconName: 'SunMedium',
+    description: 'ไฟต่อเนื่อง LED, Softbox, ไฟ Tube RGB สำหรับงานโปรดักชัน'
+  },
+  {
+    key: 'tripod',
+    label: 'ขาตั้งกล้องและกิมบอล',
+    iconName: 'Maximize2',
+    description: 'ขาตั้งวิดีโอ Fluid Head, ไม้กันสั่น Gimbal, โมโนพอด'
+  },
+  {
+    key: 'projector',
+    label: 'โปรเจกเตอร์และสื่อฉาย',
+    iconName: 'Projector',
+    description: 'เครื่องฉายเลเซอร์ความสว่างสูง, Visualizer, จอฉายพกพา'
+  },
+  {
+    key: 'display',
+    label: 'แท็บเล็ตและจอวาดภาพ',
+    iconName: 'Tablet',
+    description: 'Wacom Pen Display, iPad Pro สำหรับออกแบบกราฟิกการศึกษา'
+  },
+  {
+    key: 'accessories',
+    label: 'อุปกรณ์เสริมและสายสัญญาณ',
+    iconName: 'Layers',
+    description: 'การ์ดหน่วยความจำ SD/CFexpress, แบตเตอรี่สำรอง, เครื่องแปลงสัญญาณ HDMI'
+  }
+];
+
+export const INITIAL_EQUIPMENT: Equipment[] = [
+  {
+    id: 'eq-cam-001',
+    code: 'EDTECH-CAM-001',
+    name: 'Sony Alpha A7 IV Mirrorless Camera',
+    category: 'camera',
+    totalQuantity: 4,
+    availableQuantity: 2,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80',
+    description: 'กล้องฟูลเฟรม 33 ล้านพิกเซล บันทึก 4K 60p สำหรับงานผลิตสารคดี รายการโทรทัศน์เพื่อการศึกษา และสื่อการเรียนรู้ออนไลน์',
+    location: 'ห้องปฏิบัติการผลิตสื่อ 402 (ตู้กล้อง A1)',
+    accessories: ['แบตเตอรี่ NP-FZ100 2 ก้อน', 'แท่นชาร์จคู่', 'SD Card 128GB V90', 'สายคล้องคอ', 'กระเป๋ากล้อง'],
+    createdAt: '2026-09-01T08:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-cam-002',
+    code: 'EDTECH-CAM-002',
+    name: 'Canon EOS R6 Mark II + Lens RF 24-105mm F4L',
+    category: 'camera',
+    totalQuantity: 3,
+    availableQuantity: 3,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80',
+    description: 'กล้องวิดีโอความคมชัดสูง 6K Oversampled พร้อมเลนส์ซูมอเนกประสงค์เกรดโปร สำหรับฝึกทักษะการถ่ายทอดภาพ',
+    location: 'ห้องปฏิบัติการผลิตสื่อ 402 (ตู้กล้อง A2)',
+    accessories: ['เลนส์ RF 24-105mm F4L USM', 'แบตเตอรี่ LP-E6NH 2 ก้อน', 'SD Card 128GB', 'ฮูดเลนส์', 'กระเป๋ากล้อง'],
+    createdAt: '2026-09-05T09:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-cam-003',
+    code: 'EDTECH-CAM-003',
+    name: 'DJI Osmo Pocket 3 Creator Combo',
+    category: 'camera',
+    totalQuantity: 5,
+    availableQuantity: 4,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80',
+    description: 'กล้องพกพาเซนเซอร์ 1 นิ้ว พร้อมระบบกันสั่น 3 แกน จอหมุน 2 นิ้ว เหมาะสำหรับทำ Vlog สื่อสัมภาษณ์ และการศึกษานอกสถานที่',
+    location: 'ห้องศูนย์โสตฯ 401 (ตู้ B1)',
+    accessories: ['ไมโครโฟน DJI Mic 2 Transmitter', 'ด้ามจับแบตเตอรี่เสริม', 'ขาตั้งขนาดเล็ก Mini Tripod', 'เลนส์มุมกว้าง Wide-Angle Lens', 'ซองใส่พกพา'],
+    createdAt: '2026-09-10T10:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-mic-001',
+    code: 'EDTECH-MIC-001',
+    name: 'DJI Mic 2 Wireless Microphone (2 TX + 1 RX)',
+    category: 'audio',
+    totalQuantity: 6,
+    availableQuantity: 4,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80',
+    description: 'ชุดไมค์ลอยไร้สาย 2 ตัวส่ง บันทึกเสียงภายในตัวแบบ 32-bit Float คมชัดสูง ป้องกันเสียงแตกพร่า พร้อมระบบตัดเสียงรบกวนอัจฉริยะ',
+    location: 'ห้องควบคุมเสียง 404 (ตู้เสียง C1)',
+    accessories: ['เคสชาร์จพกพา', 'ตัวส่งสัญญาณ TX 2 ตัว', 'ตัวรับสัญญาณ RX 1 ตัว', 'หัวแปลง Lightning & Type-C', 'ตัวกันลมขนเฟอร์ 2 ชิ้น'],
+    createdAt: '2026-09-12T11:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-mic-002',
+    code: 'EDTECH-MIC-002',
+    name: 'Rode Wireless PRO Dual Wireless System',
+    category: 'audio',
+    totalQuantity: 4,
+    availableQuantity: 3,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?auto=format&fit=crop&w=800&q=80',
+    description: 'ระบบไมโครโฟนไร้สายระดับออกอากาศ รองรับ Timecode สำหรับซิงค์ภาพและเสียงความละเอียดสูง 32-bit Float',
+    location: 'ห้องควบคุมเสียง 404 (ตู้เสียง C2)',
+    accessories: ['เคสชาร์จไฟ', 'Lavalier II ไมค์หนีบปกเสื้อ 2 ชิ้น', 'MagClip GO แม่เหล็กหนีบเสื้อ 2 ชิ้น', 'สายเชื่อมต่อ SC2, SC21, SC22'],
+    createdAt: '2026-09-15T13:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-mic-003',
+    code: 'EDTECH-REC-001',
+    name: 'Zoom H6 Handy Recorder (All Black Edition)',
+    category: 'audio',
+    totalQuantity: 3,
+    availableQuantity: 2,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80',
+    description: 'เครื่องบันทึกเสียงภาคสนาม 6 แชนเนล พร้อมหัวไมค์ X/Y Stereo และช่องต่อ XLR/TRS Combos 4 ช่อง สำหรับงานบันทึกเสียงสัมมนาและพอดแคสต์การศึกษา',
+    location: 'ห้องควบคุมเสียง 404 (ตู้เสียง C3)',
+    accessories: ['แคปซูลไมค์ XYH-6', 'ฟองน้ำกันลม', 'ถ่านชาร์จ Eneloop AA 4 ก้อน', 'การ์ด SD 64GB', 'กล่องฮาร์ดเคสกันกระแทก'],
+    createdAt: '2026-09-18T14:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-lit-001',
+    code: 'EDTECH-LIT-001',
+    name: 'Aputure Amaran 200d S Daylight LED Video Light',
+    category: 'lighting',
+    totalQuantity: 4,
+    availableQuantity: 3,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=800&q=80',
+    description: 'ไฟสตูดิโอ 200W แสงขาว 5600K คุณภาพแสงแม่นยำสูง CRI 96+ พร้อมช่องเมาท์ Bowens ใช้สำหรับจัดไฟสตูดิโอถ่ายทอดสดและถ่ายสัมภาษณ์อาจารย์',
+    location: 'ห้องสตูจัดแสง 403 (ชั้นวางไฟ L1)',
+    accessories: ['Softbox Light Dome II 90cm', 'โคมรีเฟล็กเตอร์ 55 องศา', 'สายไฟ AC อะแดปเตอร์', 'ขาตั้งไฟ C-Stand Heavy Duty'],
+    createdAt: '2026-09-20T10:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-lit-002',
+    code: 'EDTECH-LIT-002',
+    name: 'Nanlite PavoTube II 15X RGBWW LED Pixel Tube (ชุด 2 หลอด)',
+    category: 'lighting',
+    totalQuantity: 2,
+    availableQuantity: 1,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80',
+    description: 'ไฟแท่ง LED ท่อ RGBWW ความยาว 2 ฟุต ควบคุมเอฟเฟกต์สีได้หลากหลาย เหมาะสำหรับย้อมสีฉากสตูดิโอและสร้างบรรยากาศสร้างสรรค์ในคลิปการสอน',
+    location: 'ห้องสตูจัดแสง 403 (ชั้นวางไฟ L2)',
+    accessories: ['หลอดไฟ PavoTube II 15X จำนวน 2 หลอด', 'อะแดปเตอร์ชาร์จไฟ 2 ชุด', 'ตัวหนีบโปร่งใสพร้อมขาตั้งยาง', 'กระเป๋าพกพาบุนวม'],
+    createdAt: '2026-09-22T15:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-tri-001',
+    code: 'EDTECH-TRI-001',
+    name: 'Manfrotto 504X Fluid Video Head + 645 Fast Tripod',
+    category: 'tripod',
+    totalQuantity: 4,
+    availableQuantity: 2,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1581591524425-c7e0978865fc?auto=format&fit=crop&w=800&q=80',
+    description: 'ชุดขาตั้งกล้องวิดีโอระดับมืออาชีพ หัวน้ำมันแพน-ทิลท์นุ่มนวล ระบบกางเร็ว Fast Lever Lock รองรับน้ำหนักอุปกรณ์กล้องหนักสูงสุด 12 กก.',
+    location: 'ห้องปฏิบัติการผลิตสื่อ 402 (ชั้นวางขาตั้ง T1)',
+    accessories: ['เพลท Quick Release แมนฟรอตโต้', 'ด้ามจับแพน Pan Bar', 'กระเป๋าขาตั้งบุนวมสะพายได้'],
+    createdAt: '2026-09-25T09:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-tri-002',
+    code: 'EDTECH-GIM-001',
+    name: 'DJI RS 3 Pro Gimbal Stabilizer Combo',
+    category: 'tripod',
+    totalQuantity: 3,
+    availableQuantity: 3,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80',
+    description: 'กิมบอลกันสั่น 3 แกน แขนคาร์บอนไฟเบอร์ รองรับน้ำหนัก 4.5 กก. ล็อกแกนอัตโนมัติ สำหรับการถ่ายช็อตเคลื่อนไหว ติดตามตัวผู้สอนในห้องปฏิบัติการ',
+    location: 'ห้องปฏิบัติการผลิตสื่อ 402 (ตู้กิมบอล G1)',
+    accessories: ['มอเตอร์โฟกัส Focus Motor (2022)', 'ตัวส่งสัญญาณ Ronin RavenEye', 'ด้ามจับกระเป๋า Briefcase Handle', 'สายควบคุมกล้อง RSS', 'เคสกระเป๋าแข็ง'],
+    createdAt: '2026-09-28T10:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-prj-001',
+    code: 'EDTECH-PRJ-001',
+    name: 'Epson EB-L210W Laser Wireless Projector (4,500 Lumens)',
+    category: 'projector',
+    totalQuantity: 3,
+    availableQuantity: 2,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    description: 'โปรเจกเตอร์เลเซอร์ระดับความสว่างสูงพิเศษ 4,500 ลูเมน ความคมชัด WXGA ฉายได้ชัดเจนแม้ห้องเรียนเปิดไฟสว่าง รองรับ Miracast และไร้สาย',
+    location: 'ศูนย์บริการสื่อการสอน 401 (ตู้ P1)',
+    accessories: ['รีโมทคอนโทรลพร้อมถ่าน', 'สายไฟ AC', 'สาย HDMI ความเร็วสูง 5 เมตร', 'กระเป๋าหิ้วกันกระแทก'],
+    createdAt: '2026-10-01T11:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  },
+  {
+    id: 'eq-tab-001',
+    code: 'EDTECH-TAB-001',
+    name: 'Wacom One Pen Display 13.3" (DTC133W0D)',
+    category: 'display',
+    totalQuantity: 5,
+    availableQuantity: 4,
+    status: 'available',
+    imageUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80',
+    description: 'จอวาดภาพกราฟิกขนาด 13.3 นิ้ว Full HD พร้อมปากกาแรงกด 4,096 ระดับ เหมาะสำหรับการสอนวาดสตอรี่บอร์ด สื่อแอนิเมชัน และออกแบบสื่อบทเรียน',
+    location: 'ห้องคอมพิวเตอร์กราฟิก 405 (ตู้แท็บเล็ต W1)',
+    accessories: ['ปากกา Wacom One Pen (ไม่ต้องชาร์จ)', 'หัวปากกาสำรอง 3 ชิ้น', 'สายเชื่อมต่อ X-Shape 3-in-1', 'อะแดปเตอร์จ่ายไฟ'],
+    createdAt: '2026-10-02T13:00:00.000Z',
+    updatedAt: '2026-10-08T08:00:00.000Z'
+  }
+];
+
+export const INITIAL_REQUESTS: BorrowRequest[] = [
+  {
+    id: 'req-001',
+    requestNumber: 'REQ-20261005-001',
+    equipmentId: 'eq-cam-001',
+    equipmentCode: 'EDTECH-CAM-001',
+    equipmentName: 'Sony Alpha A7 IV Mirrorless Camera',
+    equipmentImage: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80',
+    equipmentCategory: 'camera',
+    userId: 'user-002',
+    userName: 'ภัทรพล เจริญศิลป์',
+    userEmail: 'pattarapol.c@edtech.ac.th',
+    userPhone: '081-234-5678',
+    studentId: '65020123',
+    department: 'ภาควิชาเทคโนโลยีการศึกษา (ปี 3)',
+    quantity: 1,
+    borrowDate: '2026-10-05',
+    expectedReturnDate: '2026-10-09',
+    purpose: 'ถ่ายทำวิดีโอโครงงานสื่อบทเรียนวิชา ET421 การผลิตสื่อวีดิทัศน์ทางการศึกษา',
+    courseOrProject: 'ET421 Educational Video Production',
+    status: 'active',
+    approvedBy: 'อาจารย์ผู้ดูแลระบบ (chiratchaya041048@gmail.com)',
+    createdAt: '2026-10-04T10:15:00.000Z',
+    updatedAt: '2026-10-05T09:00:00.000Z'
+  },
+  {
+    id: 'req-002',
+    requestNumber: 'REQ-20261006-002',
+    equipmentId: 'eq-mic-001',
+    equipmentCode: 'EDTECH-MIC-001',
+    equipmentName: 'DJI Mic 2 Wireless Microphone (2 TX + 1 RX)',
+    equipmentImage: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80',
+    equipmentCategory: 'audio',
+    userId: 'user-002',
+    userName: 'ภัทรพล เจริญศิลป์',
+    userEmail: 'pattarapol.c@edtech.ac.th',
+    userPhone: '081-234-5678',
+    studentId: '65020123',
+    department: 'ภาควิชาเทคโนโลยีการศึกษา (ปี 3)',
+    quantity: 1,
+    borrowDate: '2026-10-05',
+    expectedReturnDate: '2026-10-09',
+    purpose: 'บันทึกเสียงผู้สอนและวิทยากรภายนอกเพื่อประกอบการวิจัยสื่อการเรียนรู้',
+    courseOrProject: 'ET421 Educational Video Production',
+    status: 'active',
+    approvedBy: 'อาจารย์ผู้ดูแลระบบ (chiratchaya041048@gmail.com)',
+    createdAt: '2026-10-04T10:18:00.000Z',
+    updatedAt: '2026-10-05T09:00:00.000Z'
+  },
+  {
+    id: 'req-003',
+    requestNumber: 'REQ-20261007-003',
+    equipmentId: 'eq-lit-002',
+    equipmentCode: 'EDTECH-LIT-002',
+    equipmentName: 'Nanlite PavoTube II 15X RGBWW LED Pixel Tube (ชุด 2 หลอด)',
+    equipmentImage: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80',
+    equipmentCategory: 'lighting',
+    userId: 'user-003',
+    userName: 'ดวงกมล วัฒนาสิริ',
+    userEmail: 'duangkamol.w@edtech.ac.th',
+    userPhone: '089-876-5432',
+    studentId: '66020456',
+    department: 'ภาควิชาเทคโนโลยีการศึกษา (ปี 2)',
+    quantity: 1,
+    borrowDate: '2026-10-09',
+    expectedReturnDate: '2026-10-11',
+    purpose: 'จัดแสงฉากสตูดิโอถ่ายทอดสดสัมมนาวิชาการนวัตกรรมทางการศึกษา EDTECH-EXPO',
+    courseOrProject: 'สัมมนาวิชาการ EDTECH-EXPO',
+    status: 'pending',
+    createdAt: '2026-10-07T14:22:00.000Z',
+    updatedAt: '2026-10-07T14:22:00.000Z'
+  },
+  {
+    id: 'req-004',
+    requestNumber: 'REQ-20261001-004',
+    equipmentId: 'eq-tri-001',
+    equipmentCode: 'EDTECH-TRI-001',
+    equipmentName: 'Manfrotto 504X Fluid Video Head + 645 Fast Tripod',
+    equipmentImage: 'https://images.unsplash.com/photo-1581591524425-c7e0978865fc?auto=format&fit=crop&w=800&q=80',
+    equipmentCategory: 'tripod',
+    userId: 'user-004',
+    userName: 'ผศ.ดร. สุภาวดี สื่อการสอน',
+    userEmail: 'supawadee.s@edtech.ac.th',
+    userPhone: '085-111-2233',
+    studentId: 'STAFF-ET008',
+    department: 'คณาจารย์ประจำภาควิชาเทคโนโลยีการศึกษา',
+    quantity: 1,
+    borrowDate: '2026-10-01',
+    expectedReturnDate: '2026-10-04',
+    actualReturnDate: '2026-10-04',
+    purpose: 'บันทึกภาพบรรยายรายวิชาออนไลน์ MOOC ของภาควิชา',
+    courseOrProject: 'โครงการพัฒนารายวิชาออนไลน์ MOOC',
+    status: 'returned',
+    returnCondition: 'perfect',
+    returnNotes: 'อุปกรณ์สภาพสมบูรณ์ ครบทุกชิ้นส่วน แพนและทิลท์ทำงานได้ดีเยี่ยม',
+    approvedBy: 'อาจารย์ผู้ดูแลระบบ (chiratchaya041048@gmail.com)',
+    receivedBy: 'อาจารย์ผู้ดูแลระบบ (chiratchaya041048@gmail.com)',
+    createdAt: '2026-09-30T09:00:00.000Z',
+    updatedAt: '2026-10-04T16:30:00.000Z'
+  }
+];
+
+export const DEMO_USERS: UserProfile[] = [
+  {
+    id: 'admin-chiratchaya',
+    email: 'chiratchaya041048@gmail.com',
+    displayName: 'อ. จิรัชญา สถิตย์สุข (Admin)',
+    phoneNumber: '02-649-5000 ต่อ 1520',
+    studentId: 'ADMIN-EDTECH-01',
+    department: 'ภาควิชาเทคโนโลยีการศึกษา คณะศึกษาศาสตร์',
+    photoURL: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    role: 'admin',
+    createdAt: '2026-08-01T00:00:00.000Z'
+  },
+  {
+    id: 'user-002',
+    email: 'pattarapol.c@edtech.ac.th',
+    displayName: 'ภัทรพล เจริญศิลป์ (นิสิต/นักศึกษา)',
+    phoneNumber: '081-234-5678',
+    studentId: '65020123',
+    department: 'ภาควิชาเทคโนโลยีการศึกษา (ชั้นปีที่ 3)',
+    photoURL: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80',
+    role: 'user',
+    createdAt: '2026-09-01T00:00:00.000Z'
+  },
+  {
+    id: 'user-004',
+    email: 'supawadee.s@edtech.ac.th',
+    displayName: 'ผศ.ดร. สุภาวดี สื่อการสอน (อาจารย์)',
+    phoneNumber: '085-111-2233',
+    studentId: 'STAFF-ET008',
+    department: 'อาจารย์ประจำภาควิชาเทคโนโลยีการศึกษา',
+    photoURL: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+    role: 'user',
+    createdAt: '2026-09-10T00:00:00.000Z'
+  }
+];

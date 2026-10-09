@@ -1,0 +1,84 @@
+<svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#DFD6ED" />
+      <stop offset="100%" stopColor="#CAC0E2" />
+    </linearGradient>
+    <linearGradient id="monitorFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#674CA0" />
+      <stop offset="100%" stopColor="#4E3682" />
+    </linearGradient>
+    <linearGradient id="keyTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#755AAE" />
+      <stop offset="100%" stopColor="#5D4396" />
+    </linearGradient>
+    <linearGradient id="mouseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#785DB3" />
+      <stop offset="100%" stopColor="#553D8C" />
+    </linearGradient>
+  </defs>
+
+  <!-- BASE & STAND -->
+  <ellipse cx="198" cy="285" rx="46" ry="24" fill="#382563" />
+  <ellipse cx="196" cy="281" rx="44" ry="22" fill="#583E91" />
+  <ellipse cx="196" cy="278" rx="38" ry="17" fill="#6A4EA4" />
+  <path d="M190 245 L215 245 L215 285 L190 285 Z" fill="#442F73" />
+
+  <!-- CABLES -->
+  <path d="M115 372 C115 350 195 295 235 275 C255 265 275 285 275 305" fill="none" stroke="#684CA1" stroke-width="6" stroke-linecap="round" />
+  <path d="M265 242 C300 230 380 250 385 260" fill="none" stroke="#684CA1" stroke-width="6" stroke-linecap="round" />
+
+  <!-- MONITOR -->
+  <path d="M32 150 L48 135 L48 310 L32 325 Z" fill="#3B2763" />
+  <path d="M48 135 L260 25 L280 40 L48 160 Z" fill="#463073" />
+  <path d="M32 155 C30 148 40 138 48 135 L245 28 C255 23 272 32 272 45 L272 230 C272 245 258 255 245 262 L55 358 C42 364 32 355 32 342 Z" fill="url(#monitorFace)" />
+  <path d="M52 165 L242 62 C248 58 256 64 256 72 L256 220 C256 228 248 235 242 238 L60 330 C52 334 46 328 46 320 L46 175 C46 168 50 166 52 165 Z" fill="#3E2B6B" />
+  <path d="M56 170 L240 68 C244 65 250 70 250 76 L250 216 C250 222 244 227 240 229 L62 322 C56 325 52 321 52 315 L52 178 C52 172 54 171 56 170 Z" fill="url(#screenGrad)" />
+  <path d="M62 176 L160 120 L160 268 L62 315 Z" fill="#FFFFFF" opacity="0.18" />
+
+  <!-- KEYBOARD -->
+  <g transform="translate(10, 15)">
+    <path d="M85 410 L195 480 C202 485 212 485 218 480 L445 345 C452 340 452 332 445 328 L445 340 L218 492 C212 496 202 496 195 492 L85 422 Z" fill="#2E1C50" />
+    <path d="M90 405 C85 402 85 394 92 389 L325 258 C332 254 342 254 348 258 L442 318 C448 322 448 330 442 334 L215 470 C208 474 198 474 192 470 Z" fill="#523987" />
+    <g fill="url(#keyTop)">
+      <path d="M125 385 L145 373 L162 383 L142 395 Z" />
+      <path d="M148 371 L168 359 L185 369 L165 381 Z" />
+      <path d="M171 357 L191 345 L208 355 L188 367 Z" />
+      <path d="M194 343 L214 331 L231 341 L211 353 Z" />
+      <path d="M217 329 L237 317 L254 327 L234 339 Z" />
+      <path d="M240 315 L260 303 L277 313 L257 325 Z" />
+      <path d="M263 301 L283 289 L300 299 L280 311 Z" />
+      <path d="M286 287 L306 275 L323 285 L303 297 Z" />
+      <path d="M309 273 L339 255 L356 265 L326 283 Z" />
+      <path d="M135 400 L155 388 L172 398 L152 410 Z" />
+      <path d="M158 386 L178 374 L195 384 L175 396 Z" />
+      <path d="M181 372 L201 360 L218 370 L198 382 Z" />
+      <path d="M204 358 L224 346 L241 356 L221 368 Z" />
+      <path d="M227 344 L247 332 L264 342 L244 354 Z" />
+      <path d="M250 330 L270 318 L287 328 L267 340 Z" />
+      <path d="M273 316 L293 304 L310 314 L290 326 Z" />
+      <path d="M296 302 L326 284 L343 294 L313 312 Z" />
+      <path d="M145 415 L170 400 L187 410 L162 425 Z" />
+      <path d="M173 398 L193 386 L210 396 L190 408 Z" />
+      <path d="M196 384 L216 372 L233 382 L213 394 Z" />
+      <path d="M219 370 L239 358 L256 368 L236 380 Z" />
+      <path d="M242 356 L262 344 L279 354 L259 366 Z" />
+      <path d="M265 342 L285 330 L302 340 L282 352 Z" />
+      <path d="M288 328 L318 310 L335 320 L305 338 Z" />
+      <path d="M321 308 L351 290 L368 300 L338 318 Z" />
+      <path d="M155 430 L180 415 L197 425 L172 440 Z" />
+      <path d="M184 413 L284 353 L301 363 L201 423 Z" fill="#694FA3" />
+      <path d="M288 351 L318 333 L335 343 L305 361 Z" />
+      <path d="M322 331 L347 316 L364 326 L339 341 Z" />
+      <path d="M351 314 L381 296 L398 306 L368 324 Z" />
+    </g>
+  </g>
+
+  <!-- MOUSE -->
+  <g transform="translate(365, 205)">
+    <path d="M15 50 C20 75 75 85 105 55 C115 45 110 35 100 25 L100 32 C105 40 90 58 70 65 C45 72 20 62 15 50 Z" fill="#3B2668" />
+    <path d="M12 45 C8 32 30 10 55 5 C82 0 110 15 112 32 C114 48 95 68 68 70 C35 72 16 58 12 45 Z" fill="url(#mouseGrad)" />
+    <path d="M55 5 C56 18 55 28 53 35" stroke="#4A347D" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M50 18 C50 14 55 12 58 14 C60 16 60 22 58 24 C55 26 50 24 50 18 Z" fill="#D9CFE8" />
+  </g>
+</svg>

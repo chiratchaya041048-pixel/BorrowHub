@@ -1,0 +1,6 @@
+{
+  "name": "ระบบยืม-คืนอุปกรณ์ ภาควิชาเทคโนโลยีการศึกษา",
+  "description": "Educational Technology Equipment Borrowing System - ระบบจัดการและยืม-คืนอุปกรณ์และโสตทัศนูปกรณ์สำหรับภาควิชาเทคโนโลยีการศึกษา",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
